@@ -2,10 +2,23 @@
 {
     public class Function
     {
-        private int XCoefficient { get; set; }
-        private int YCoefficient { get; set; }
-        private int XYCoefficient { get; set; }
-        private int FreeCoefficient { get; set; }
+        public override int GetHashCode()
+        {
+            unchecked {
+                var hashCode = XCoefficient;
+                hashCode = (hashCode * 397) ^ YCoefficient;
+                hashCode = (hashCode * 397) ^ XYCoefficient;
+                hashCode = (hashCode * 397) ^ FreeCoefficient;
+                return hashCode;
+            }
+        }
+
+        private int XCoefficient { get; }
+        private int YCoefficient { get; }
+        private int XYCoefficient { get; }
+        private int FreeCoefficient { get; }
+
+        public Function() { }
 
         public Function(int xCoef, int yCoef, int xyCoef, int freeCoef)
         {
@@ -37,6 +50,16 @@
         {
             return new Function(coef * function.XCoefficient, coef * function.YCoefficient,
                 coef * function.XYCoefficient, coef * function.FreeCoefficient);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (this == obj) return true;
+            if (obj != null && GetType() != obj.GetType()) return false;
+            Function function = (Function) obj;
+            if (function != null && (function.XCoefficient == XCoefficient && function.YCoefficient == YCoefficient &&
+                                     function.XYCoefficient == XYCoefficient && function.FreeCoefficient == FreeCoefficient)) return true;
+            return false;
         }
     }
 }
