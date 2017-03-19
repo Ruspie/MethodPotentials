@@ -33,7 +33,7 @@
             return FreeCoefficient + XCoefficient * point.X + YCoefficient * point.Y + XYCoefficient * point.X * point.Y;
         }
 
-        public int GetY(int x)
+        public double GetY(double x)
         {
             return -(XCoefficient * x + FreeCoefficient) / (XYCoefficient * x + YCoefficient);
         }
@@ -44,6 +44,18 @@
                 firstFunction.YCoefficient + secondFunction.YCoefficient,
                 firstFunction.XYCoefficient + secondFunction.XYCoefficient,
                 firstFunction.FreeCoefficient + secondFunction.FreeCoefficient);
+        }
+
+        public override string ToString()
+        {
+            if (XYCoefficient != 0)
+                return "y=(" + -XCoefficient + "*x" + (-FreeCoefficient < 0 ? "" : "+") + -FreeCoefficient + ")/(" +
+                       XYCoefficient + "*x" + (YCoefficient < 0 ? "" : "+") + YCoefficient + ")";
+            if (YCoefficient != 0)
+                return "y=" + -(double) XCoefficient / YCoefficient + "*x" +
+                       (-(double) FreeCoefficient / YCoefficient < 0 ? "" : "+") +
+                       -(double) FreeCoefficient / YCoefficient;
+            return "x=" + -(double) FreeCoefficient / XYCoefficient;
         }
 
         public static Function operator *(int coef, Function function)

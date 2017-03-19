@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodPotentials", "MethodP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodPotentials.Tests", "..\MethodPotentials.Tests\MethodPotentials.Tests.csproj", "{F2F7015C-2295-4505-8A7C-3D7A39FAE59B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "..\Test\Test.csproj", "{233B569C-468D-4D25-A3EE-3CE98C8504B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F2F7015C-2295-4505-8A7C-3D7A39FAE59B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2F7015C-2295-4505-8A7C-3D7A39FAE59B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2F7015C-2295-4505-8A7C-3D7A39FAE59B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{233B569C-468D-4D25-A3EE-3CE98C8504B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{233B569C-468D-4D25-A3EE-3CE98C8504B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{233B569C-468D-4D25-A3EE-3CE98C8504B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{233B569C-468D-4D25-A3EE-3CE98C8504B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

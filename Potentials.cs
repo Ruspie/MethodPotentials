@@ -6,7 +6,7 @@ namespace MethodPotentials
     {
         private Function _decisiveFunction;
         private int _correction;
-        public int NumberClasses { get; set; }
+        private int NumberClasses { get; }
 
         public Potentials(int numberClasses)
         {
@@ -15,16 +15,16 @@ namespace MethodPotentials
 
         public Function GetDecisiveFunction(Point[][] teachingPoints)
         {
-            if (_decisiveFunction != null) return _decisiveFunction;
             _correction = 1;
             _decisiveFunction = new Function();
             bool isError;
             int iterationNumber = 0;
             do {
                 isError = DoOneIteration(teachingPoints, ref _decisiveFunction);
+                iterationNumber++;
             } while (isError && iterationNumber < 1000);
 
-            return _decisiveFunction;
+            return iterationNumber == 1000 ? null : _decisiveFunction;
         }
 
         private bool DoOneIteration(Point[][] teachingPoints, ref Function decisiveFunction)
@@ -52,9 +52,17 @@ namespace MethodPotentials
         private int GetCorrection(Point point, int classNumber)
         {
             int functionValue = _decisiveFunction.GetValue(point);
-            if ((functionValue < 0) && (classNumber == 0)) return 1;
+            if ((functionValue <= 0) && (classNumber == 0)) return 1;
             if ((functionValue > 0) && (classNumber == 1)) return -1;
             return 0;
+        }
+
+        public int GetClassNumberForPoint(Point point)
+        {
+            int functionValue = _decisiveFunction.GetValue(point);
+            if (functionValue > 0) return 0;
+            if (functionValue < 0) return 1;
+            return -1;
         }
 
         private Function GetPotentialFunction(Point point)
